@@ -22,6 +22,14 @@
         src = ./.;
         cargoLock.lockFile = ./Cargo.lock;
       };
+      devShell = pkgs.mkShell {
+        packages = [
+          pkgs.rustc
+          pkgs.cargo
+          pkgs.rust-analyzer
+          pkgs.rustfmt
+        ];
+      };
       formatter = alejandra.defaultPackage.${system};
       defaultPackage = self.packages.x86_64-linux.appname;
     });
